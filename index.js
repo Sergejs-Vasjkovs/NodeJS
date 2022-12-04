@@ -41,8 +41,17 @@ app.delete('/:id', async (req, res) => {
     })
 })
 
-app.put('/:note', async (req, res) => {
-    await updateNote(req.params.note)
+// app.put('/:note', async (req, res) => {
+//     await updateNote(req.params.note)
+//     res.render('index', {
+//         title: 'Express App',
+//         notes: await getNotes(),
+//         created: false
+//     })
+// })
+
+app.put('/:id', async (req, res) => {
+    await updateNote({ id: req.params.id, title: req.body.title })
     res.render('index', {
         title: 'Express App',
         notes: await getNotes(),
